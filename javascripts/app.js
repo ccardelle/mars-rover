@@ -1,7 +1,7 @@
 // Rover Object Goes Here
 // ======================
 
-var rover = {direction:"N", x: 0, y: 0};
+var rover = {direction:"N", x: 0, y: 0, travelLog:[]};
 
 // ======================
 
@@ -73,3 +73,27 @@ function moveForward(rover){
 
   console.log("moveForward was called")
 }
+
+// Function that receives a string as an arg and calls the correct command function depending on the letter. (r,l,f)
+function rover_Commands(commands){
+var xy = 0;
+for (i = 0; i < commands.length; i++)
+  if (commands[i] == "r"){
+    turnRight(rover);
+    
+  
+  } else if (commands[i] == "l") {
+    turnLeft(rover);
+    
+  
+  } else if (commands[i] == "f") {
+    moveForward(rover);
+    rover.travelLog[xy] = rover.x + "," + rover.y;
+    xy++;
+  } else {
+    console.log("Can only send r, l, and f as commands")
+  }
+  console.log(rover.travelLog);  
+}
+  
+  
